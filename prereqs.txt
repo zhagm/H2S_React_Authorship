@@ -1,0 +1,7 @@
+NodeJS Backend Curriculum
+Deploying your API to Heroku (which needs to be fixed, I'll mention at the intro that if students didn't deploy, they should go back and do that. I'll provide my api link in case they don't want to, but it'll be one link so multiple students might be modifiying it at the same time, not ideal).
+
+
+Notes:
+https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment
+https://devcenter.heroku.com/articles/git#deploying-code
