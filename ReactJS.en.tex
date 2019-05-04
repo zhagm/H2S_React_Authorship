@@ -225,50 +225,59 @@ Now it’s time for you to put into practice the new skills we just learned. Exp
 %                      Setting up POST endpoints                               %
 %                                                                              %
 %******************************************************************************%
-\chapter{Exercise \exercicenumber: Setting up POST endpoints}
+\chapter{Exercise \exercicenumber: Lists and Keys}
+One of the perks of having React elements as JavaScript Objects is that we can use them like we would use regular JavaScript. We can put them inside of loops, assign them to variables, return them from functions, accept them as arguments, and put them in conditional statements. This means our table doesn’t need to have a <tr> for each row, with the hardcoded task and completion status. Instead, we can use an array of data and render the list dynamically. For now we’ll use a dummy array of todo items. Eventually we’ll be getting our data from our API, but until we learn how to make an API call we’ll just use this:
+\newline
+\texttt{const dummyTodos = [}
 
-    We can fetch our entire db and individual users, now we will learn how to set up a `POST` endpoint so we can add new users to our database. In order to do this we will be adding a few additonal libraries. First run \texttt{npm install --save body-parser}. Then add the body-parser middleware to our express app. We will also be adding the \texttt{"fs"} library to access the file system, this library comes with Node. The top of your \texttt{server.js} file should look like this:
+\texttt{\{task: "Complete Ex.01 of the React course", completed: false\},}
 
-\begin{42jscode}
-    // Server.js
-    const express = require("express");
-    const db = require("./db.json");
-    const fs = require("fs");
-    const bodyParser = require("body-parser");
-    const app = express();
+\texttt{\{task: "Make a front-end for my To-do List API", completed: false\},}
 
-    // Add bodyparsing middleware to app
-    app.use(bodyParser.json());
-\end{42jscode}
-\newpage
-    Set up a new `POST` endpoint called \texttt{"/users"}, this will be exactly the same as our `GET` route except we will use \texttt{app.get('/users')}. In this route we will also be pulling the \texttt{"name"} variable out of \texttt{"req.body"}, this is what we setup the \texttt{"body-parser"} middleware for. We will check that name exists, if it doesn't we will return a \texttt{400} status. Next we will setup the new user object and assign it's \texttt{name} and \texttt{id} values. Once we have the object setup, we can push it to the database. However, simply push the new value to the database will not update the file itself. We will have to first convert our JSON array into a string, then use the \texttt{fs} module to write the stringified database to our JSON file. Follow this example:
-\begin{42jscode}
-    // Create new user
-    app.post("/users", (req, res) => {
-        const { name } = req.body;
-        if (!name) {
-            res.status(400).send("Could not add user");
-        }
-        let user = {};
-        user.name = name;
-        user.id = db.length;
-        db.push(user);
-        // Convert DB to JSON string
-        data = JSON.stringify(db);
-        // Write string to file
-        fs.writeFile("./db.json", data, "utf8", err => {
-            if (err) {
-            res.status(404).send(`Failed to add ${user.name} to db`);
-            }
-            res.status(200).send(`Added ${user.name} to db`);
-        });
-    });
-\end{42jscode}
+\texttt{\{task: "Complete the NodeJS course", completed: true\},}
+\newline
+\texttt{];}
+\newline
+Initialize the dummyTodos variable at the top of your Table’s render method. We can also \href{https://reactjs.org/docs/introducing-jsx.html#embedding-expressions-in-jsx}{embed Javascript inside of our JSX}. So instead of the multiple row items inside of the tbody, we want to embed a variable that holds a dynamic array of row elements that we’ll be creating.\\
+\section{Lists}
+Let’s start by creating our dynamic array of row elements. If you aren’t familiar with the \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map}{Array.map() method}, go check it out and do the \href{https://learn.freecodecamp.org/javascript-algorithms-and-data-structures/functional-programming/use-the-map-method-to-extract-data-from-an-array}{FreeCodeCamp lessons} on it. Inside our render function, after we initialize our \texttt{dummyTodos}, lets create a variable \texttt{todoItems} that will use the map method to create an array of <tr> elements:
 
+\texttt{const todoItems = dummyTodos.map((todo, i) => \{}
 
+\texttt{~~~~return (}
 
-\newpage
-% Don't forget this line in order to increment the exercise counter
+\texttt{~~~~~~~~<tr>}
+
+\texttt{~~~~~~~~~~~~<td>{todo.task}</td>}
+
+\texttt{~~~~~~~~~~~~<td>{JSON.stringify(todo.completed)}</td>}
+
+\texttt{~~~~~~~~</tr>}
+
+\texttt{~~~~);}
+
+\texttt{\});}
+
+~\\
+Now we’ll want to embed this \texttt{todoItems} variable inside the <tbody> element and delete the hardcoded <tr> elements. To embed Javascript code inside JSX elements, just wrap your Javascript in {} brackets.
+~\\
+Refresh your app and check that your table is now filled with your dummy data.
+\section{Keys}
+If you open up your chrome devtools (alt-command-j), you should see this error:
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/09.png}
+    \end{center}
+\end{figure}
+~\\
+React requires each child in a list to have a "key" property. You can find out more about that \href{https://reactjs.org/docs/lists-and-keys.html#keys}{here}. You’ll want to add that key property to your <tr> element and, for the time being, set the value to the index of the todo. The key should be a unique value, so once we get our data from our database, we’ll update the key to be the id property of the todo. Your code should now look something like this:
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/10.png}
+    \end{center}
+\end{figure}
+~\\
+In the next section, we’ll be moving our dummyTodos to the state, where we can store data local to the component.
 \nextexercice
 
 
