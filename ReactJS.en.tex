@@ -18,7 +18,7 @@
 \title{React.js}
 \member{Zhag M}{zmagauin@student.42.us.org}
 \summary {
-    Learn front-end development and build a well-designed website view with React.js
+    Learn front-end development and build a well designed website view with React.js
 }
 \maketitle
 
@@ -41,19 +41,22 @@ Humorous intro
 %******************************************************************************%
 \chapter{Introduction}
 
-When a user opens a webpage, views the images, reads the content, and clicks the links, they are interacting with the front-end (or client-side) of the website. Front-end developers write the code to create views, essentially bridge the connection between a regular person on their browser, and the API’s, services, and content that are being served on the backend. We have now created a backend server, but what can we do with it other than use postman to make requests? Your grandma wouldn’t be able able to use postman, make requests, and send the necessary body parameters. And even if she could, she wouldn’t want to. That’s where this project comes in. Having a good user interface is important in making a website useable. We’ll be learning the essentials of front-end using React.js and creating a view for your to-do list app.
+When a user opens a webpage, views the images, reads the content, and clicks the links, they are interacting with the front-end (or client-side) of the website. Front-end developers write the code to create views, essentially bridge the connection between a regular person on their browser, and the API’s, services, and content that are being served on the backend. We have now created a backend server, but what can we do with it other than use postman to make requests? That’s where this project comes in. Having a good user interface is important in making a website useable. We’ll be learning the essentials of front-end using React.js and creating a view for your to-do list app. \\
 
-What is React.js? React is a JavaScript library for building user interfaces. It was developed by Facebook in 2011, and is currently open-sourced and supported by Facebook and a big community of supporters.
+What is React.js? React is a JavaScript library for building user interfaces. All it does is manage the view, or the front-end. It was developed by Facebook in 2011, and is currently open-sourced and supported by Facebook and a big community of developers.\\
+
+Part of what makes React so cool, aside from the speed and ease of learning, is the format. Thanks to the JSX syntax, React code feels very tangible. It feels like we're combining both JavaScript and HTML, which makes it easy to conceptualize. It's also component-based, making the code you write in one React project pretty reusable for another.
 
 \hint {
-    Read through the \href{https://reactjs.org/}{React docs} for more information on React and how it works.
+    Read through the \href{https://reactjs.org/}{React docs} for more information on React, how it works, and what makes it so special.
 }
-
-Here are some links and videos with more information:
+~\\
+Take a look at these links to get a better grasp of React. Get excited about it! This is a really fun library to learn, and also one that's in high demand.
 \begin{itemize}\itemsep1pt
-\item \href{https://youtu.be/N3AkSS5hXMA}{What is React? (Watch this! It's a very useful introduction)}
-\item \href{https://brainhub.eu/blog/10-famous-apps-using-reactjs-nowadays/}{A list of some of the big companies using React}
-\item \href{https://medium.com/@hamzamahmood/advantages-of-developing-modern-web-apps-with-react-js-8504c571db71}{A general overview and advantages of using React}
+    \item \href{https://youtu.be/N3AkSS5hXMA}{What is React?} (Watch this! It's a very useful introduction)
+    \item \href{https://reactjs.org/docs/thinking-in-react.html}{Thinking in React}
+    \item \href{https://brainhub.eu/blog/10-famous-apps-using-reactjs-nowadays/}{A list of some of the big companies using React}
+    \item \href{https://medium.com/@hamzamahmood/advantages-of-developing-modern-web-apps-with-react-js-8504c571db71}{A general overview and advantages of using React}
 \end{itemize}
 
 %******************************************************************************%
@@ -63,13 +66,43 @@ Here are some links and videos with more information:
 %******************************************************************************%
 \chapter{General instructions}
 
-We'll start with setting up our environment and making sure Node and NPM are up to date on our monitors using NVM (Node Version Manager). Once we have that set up, we'll start with building our first app.
+We'll start with setting up our environment and making sure Node and NPM are up to date on our monitors using NVM (Node Version Manager). Once we have that set up, we'll start with building our first app. \\
 
-We'll be building a front-end for our To-do list API from the Node.js project. In this course, we'll be focusing purely on the front-end side of the website so you'll want to have deployed your API to heroku beforehand. If you have not done this, you'll be asked to go back and do so in the Lifecycle Methods section of this PDF.
+We'll be building a front-end for our To-do list API from the Node.js project. In this course, we'll be focusing purely on the front-end side of the website so you'll want to have deployed your API to Heroku beforehand. If you have not done this, you should go back and do that now. \\
 
 After we walk through and build our To-do list app, you'll be using your new skills to build a project of your choice.
 
-% Don't forget this line for piscine days to initiate the exercise counter at 0
+%******************************************************************************%
+%                                                                              %
+%                           Prerequisites and Setup                            %
+%                                                                              %
+%******************************************************************************%
+\chapter{Prerequisites and Setup}
+
+Before starting this project, you want to make sure you have your backend API from the previous, and that you have it deployed to Heroku. You can find the Heroku PDF (ADD LINK), if you haven’t already done it go do that now.
+
+Before we jump in, we need to check that all the tools we’ll be using are installed and up-to-date. Type \texttt{nvm} into your terminal. If it tells you the command was not found, continue onto the following section. Otherwise, skip this section and continue onto the 'Updating Node’ section.
+\section{Installing nvm}
+NVM is a Node Version Manager. Node has many versions and many new updates, so it’s good practice to have a version manager. Here we’ll be installing that using Homebrew (which you should have installed while following along with the Heroku deployment tutorial). Run the following command in your terminal:
+
+\texttt{brew install nvm}\\
+\newline
+Then follow the instructions provided after the installation (mkdir \textasciitilde/.nvm, then open \textasciitilde/.zshrc and add the necessary lines to it).
+\section{Updating Node with NVM}
+Next we’ll use nvm to install the version of Node we want to be working with. Right now we’ll be installing v.10.15.3 because it’s the last version with LTS (Long Term Support). To do this run the command:
+
+\texttt{nvm install 10.15.3}\\
+\newline
+Once that's done, run:
+
+\texttt{nvm use 10.15.3}\\
+\newline
+Check that you're running the right version of node by running:
+
+\texttt{node -v}\\
+\newline
+That’s it for our set up. Now that our environment is ready and our backend API is running, we’re ready to start actually building our app.
+
 \startexercices
 
 %******************************************************************************%
@@ -77,63 +110,67 @@ After we walk through and build our To-do list app, you'll be using your new ski
 %                             Setting up our Environment                       %
 %                                                                              %
 %******************************************************************************%
-\chapter{Exercise \exercicenumber: Setting up our Environment}
+\chapter{Exercise \exercicenumber: Making Our First Web App}
 
-Before we get started, we need to make sure a few things are up-to-date on our monitors. Normally, when working on your own computer where you have admin rights you wouldn't have to go through these steps. You would be able to just npm i -g (global install) the necessary packages and run from there. The monitors at the school are protected though, and we don't have admin access, so we'll be working around that by using NVM, which is a Node Version Manager.
+\section{Create-React-App}
 
+In this section we’ll be building the first version of our app. To do this, we’ll be using \href{https://github.com/facebook/create-react-app}{Create-React-App}, which will allow us to get into the actual front-end development instead of worrying about the details of configuration. As the \href{https://facebook.github.io/create-react-app/docs/getting-started}{official docs} state,\\
+\texttt{“Create React App is an officially supported way to create single-page React applications. It offers a modern build setup with no configuration.”}\\
+\newline
+In your terminal, run the command:
 
+\texttt{npx create-react-app todo}\\
+\newline
+Once the installation is done:
 
-\begin{42jscode}
-// Server.js
-const express = require("express")
+\texttt{cd todo}
 
-const app = express();
+\texttt{npm start}\\
+\newline
+Go to \href{localhost:3000}{localhost:3000} to check out the React App. This is the basic setup, now that you’ve seen it in action we’ll be deleting all the contents of the src directory (where our source files are located) and rewriting it to understand how React works. Go ahead and clear the source directory:
 
-app.get('/', (req, res) => {
-    console.log("Hello world!");
-    res.status(200).send("Hello world");
-});
+\texttt{rm src/*}\\
+\newline
+Now we need to make our index.js file in the src directory:
 
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
-$
-\end{42jscode}
+\texttt{touch src/index.js}
+\section{Hello, World!}
+Inside the index.js file, import 'react' and 'react-dom'. We’ll be using React for the React components we’ll be building, and react-dom for rendering our app into the dom. \\
+
+ReactDOM’s \href{https://reactjs.org/docs/react-dom.html#render}{render method} takes in two arguments, a react element and the container into which we want to render the element. We’ll give the render method this container by using the \href{https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById}{document.getElementById method}. If you check out the index.html file (in the public directory), you’ll see we have a div with an id “root”. That div is where we’ll be rendering our App.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/01.png}
+    \end{center}
+\end{figure}
+With these 3 lines of code, we’ll build our first Hello, World web app. Run 'npm start’ and check \href{localhost:3000}{localhost:3000} to see the result.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/02.png}
+    \end{center}
+\end{figure}
+\section{React Elements and JSX}
+The <h1> element above looks like html, but it’s actually a React element. What’s the difference? \href{https://reactjs.org/docs/rendering-elements.html}{React elements} are plain javascript objects. They are the smallest building blocks of a React app. The reason the React element above looks like html is because of  \href{https://reactjs.org/docs/introducing-jsx.html}{JSX, or JavaScript XML}.\\
+\newline
+Try printing out the value of our <h1> element to see what is actually happening behind the scenes:
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/03.png}
+    \end{center}
+\end{figure}
+Pull up the devtools (alt-command-j) in your browser and check the console to see what’s printed. You’ll see that the <h1> element is a Javascript object.\\
+\newline
+JSX looks like html but it gets compiled into Javascript before we run our app. Behind the scenes of our create-react-app, there’s a transpiler called Babel. All Babel does is take our fancy, nice, syntactically sugared code and turns it into plain old Javascript that can run on any browser. Check out this \href{https://babeljs.io/repl/}{Babel Repl} and play around with it. Notice how the JSX code gets converted to the React.createElement method.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/04.png}
+    \end{center}
+\end{figure}
 
 \info {
-    Check out \href{https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/}
-    {this link} for more information on npm.
+    React elements make up the nodes of the Virtual DOM, the same way html elements make up the nodes in the real DOM. This is a big part of why React is so fast. Check out \href{https://www.youtube.com/watch?v=RquK3TImY9U}{this video} for a great visual explanation.
 }
 
-\newpage
-	Let's setup our start script. Open up \texttt{package.json} and under the scripts object replace \texttt{"test"} with \texttt{"start"} and then replace the script's value with the command \texttt{"node server.js"}. Your package.json should look like this:
-
-\begin{42jscode}
-{
-    "name": "basics",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node server.js"
-    },
-    "author": "Don Stolz",
-    "license": "ISC",
-    "dependencies": {
-        "express": "^4.16.4"
-    }
-}
-\end{42jscode}
-
-	Finally our server is ready to run. From the root of your \texttt{Basics} project run \texttt{npm run start} and head to \href{http://localhost:3000/}{http://localhost:3000/} to check out your server.
-
-    \hint {
-        Use "control + c" to quit your server.
-    }
-
-\newpage
-% Don't forget this line in order to increment the exercise counter
 \nextexercice
 
 
@@ -142,60 +179,45 @@ $
 %                          Setting up endpoints                                %
 %                                                                              %
 %******************************************************************************%
-\chapter{Exercise \exercicenumber: Setting up additional endpoints}
+\chapter{Exercise \exercicenumber: Components}
 
-    Now that we have our basic server setup we can start adding more endpoints to expand our functionalty. What is an endpoint? An endpoint is a URL pattern used to communicate with an API. Endpoints can also be differntiated by their HTTP methods. An HTTP method allows us to indicate the type of action we are trying to preform. Our current server consists of a single `GET` endpoint.
+One of React’s key features is that it’s \href{https://reactjs.org/docs/glossary.html#components}{component}-based. This means we write modularized code, where we have separate pieces (the components) that can be put together to make complex UI’s. Each of the pieces also has its own state, so we can store data specific to a component. The component logic is written in JS, so we can pass data easily throughout the app and keep state out of the DOM, where it’s harder to pass around and expensive to update.
 
 \info {
-		Check out \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods}{MDN}
-		for more information on the different types of HTTP methods.
-	}
-
-    Let's first add a database so that we have some information for our new endpoints to access. Create a file called \texttt{"db.json"} in this file create a simple array of user objects with the fields \texttt{"name"} and \texttt{"id"}. It should look something like this.
-\begin{42jscode}
-[
-    {
-        "name": "Don",
-        "id": 0
-    },
-    {
-        "name": "Dan",
-        "id": 1
-    }
-]
-\end{42jscode}
-
-    Now we can access our database by importing it the same way we imported the express library. Simply add \texttt{const db = require("./db.json");} to the top of our \texttt{server.js} file.
-
-    Setup a new `GET` endpoint called \texttt{"/users"}. It will be setup simarly to our `Hello World!` example, except it will return our database:
-\begin{42jscode}
-// Get all users
-app.get("/users", (req, res) => {
-    res.status(200).send(db);
-});
-\end{42jscode}
-
-    Notice that along with the response we send back we also set the status code to 200. Status code 200 indicates that the request has succeeded. Check out the different status code values \href{https://developer.mozilla.org/en-US/docs/Web/HTTP/Status}{here} 
-
-    Next, we will setup a route to retrieve an individual user from our database. Setup another `GET` endpoint and call it \texttt{"/users/:id"}. Using \texttt{":id"} will allow us to retrieve \texttt{"id"} as a variable from the request parameters. Follow the snippet below:
-\begin{42jscode}
-// Get user by ID
-app.get("/users/:id", (req, res) => {
-    const { id } = req.params;
-
-    const user = db.find(item => item.id == id);
-    if (user) {
-        res.status(200).send(user);
-    } else {
-        res.status(404).send("Could not find user");
-    }
-});
-\end{42jscode}
-
-    Notice the new status code 404. This indicates an error, specifically that the server could not find the requested resources. Try testing your endpoints by going to \href{http://localhost:3000/users}{http://localhost:3000/users} and \href{http://localhost:3000/users/0}{http://localhost:3000/users/0}
-
-\newpage
-% Don't forget this line in order to increment the exercise counter
+    Check out the \href{https://reactjs.org/docs/thinking-in-react.html}{Thinking in React} Step 1 section on component based thinking for an overview
+}
+\section{Making Our First Component}
+To start out, let’s export our Hello World app into a component of its own. \texttt{mkdir src/components} to create the directory where we’ll store out components. Then create a new file inside the components directory called \texttt{App.js}. This will be our root component. Inside this file, you want to import React. React components can be defined as classes or functions.\\
+\texttt{Class} components need to return the root React element in their render method.\\
+\texttt{Function} components need to return the root React element.\\
+Components defined as classes have more features, but the two versions below do the same thing.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/05.png}
+    \end{center}
+\end{figure}
+Let’s use the class component for now, make sure your App.js file looks like the document on the left. Now we want to import this App.js file inside our index.js and pass that App component to our ReactDOM.render function. This is made easier by the \texttt{export default App;} line adn the end of the file, because it sets the default export to the App component. That’s why we’re able to \texttt{import App from './components/App';} instead of having to \texttt{import \{ App \} from './components/App'}.
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/06.png}
+    \end{center}
+\end{figure}
+Now you can run \texttt{npm start}. You’ll see our app looks the same as before, but now our code is modularized, and our App is a component of its own.
+\section{Creating a Table Component}
+Next we’ll be adding a <table> element that will be listing our todos. We’ll set up some dumb data for the time being, eventually we’ll be getting our data from the API we created in the NodeJS course. Let’s change our header to label our app, our “To-Do List”. Add a table element below the header. If you run your app, you should get an error:
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/07.png}
+    \end{center}
+\end{figure}
+It’s important to remember that a component needs to return one parent element. You can’t have adjacent elements, but this is easy to fix by wrapping the elements in a parent element. React provides \href{https://reactjs.org/docs/fragments.html}{\texttt{React.Fragment}} for this, it’s basically just a wrapper to group child elements under one parent component. After we wrap our code, your resulting component should look something like this:
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=16cm]{WEB/React/08.png}
+    \end{center}
+\end{figure}
+~\\
+Now it’s time for you to put into practice the new skills we just learned. Export the <table> element into its own component in the \texttt{components} directory. Name the file Table.js, and have it return our table element. Import the \texttt{Table} component into our App.js and put it where the table element is currently, below the header.
 \nextexercice
 
 %******************************************************************************%
